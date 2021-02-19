@@ -10,7 +10,7 @@ const AddForm = (props) => {
 
     const handleChange = e => {
         setState({
-            [e.target.name]:e.target.value
+            ...state, [e.target.name]:e.target.value
         });
     }
 
