@@ -1,5 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import  reducer  from './reducers/index';
+
 
 import "./index.css";
 import App from "./App";
@@ -9,8 +15,12 @@ worker.start();
 
 const rootElement = document.getElementById("root");
 
+const store = createStore(reducer, applyMiddleware(thunk, logger));
+
 ReactDOM.render(
-    <App />, 
+    <Provider store={store}>
+    <App />
+    </Provider>, 
     rootElement
 );
 
