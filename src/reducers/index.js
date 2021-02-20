@@ -18,7 +18,7 @@ const reducer = ( state = initialState, action)=>{
         case (SMURF_FETCH_SUCCESS):
             return({
                 ...state,
-                smurf: action.payload,
+                smurfs: action.payload,
                 isLoading: false
             })
 
@@ -32,14 +32,15 @@ const reducer = ( state = initialState, action)=>{
         case (ADD_SMURF):
             return({
                 ...state,
-                smurf: [ ...state.smurf.name, ...state.smurf.nickname, ...state.smurf.position, ...state.smurf.summary, ...state.smurf.id],
+                smurfs: [ ...state.smurfs, action.payload],
                 isLoading: false
             })
 
         case (ERROR_VALUE):
             return({
                 ...state,
-                error: action.payload
+                error: action.payload,
+                isLoading: false
             })
         default:
             return state;
